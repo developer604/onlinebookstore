@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('install packae') {
-      steps {
-        bat 'mvn install'
+      parallel {
+        stage('install packae') {
+          steps {
+            bat 'mvn install'
+          }
+        }
+
+        stage('deploy') {
+          steps {
+            bat 'mvn sonar:sonar'
+          }
+        }
+
       }
     }
 
