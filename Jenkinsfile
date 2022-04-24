@@ -7,5 +7,17 @@ pipeline {
       }
     }
 
+    stage('install packae') {
+      steps {
+        bat 'mvn install'
+      }
+    }
+
+    stage('deploy') {
+      steps {
+        bat 'mvn deploy'
+      }
+    }
+
   }
 }
